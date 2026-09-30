@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { fetchImage } from "./fetch-image";
 import styles from "./page.module.css";
@@ -22,7 +23,15 @@ export function CatImage({ url }: CatImageProps){
                 他のにゃんこも見る
             </button>
             <div className={styles.frame}>
-            {imageUrl && <img src={imageUrl} className={styles.img} />}
+                {imageUrl && (
+                    <Image
+                        src={imageUrl}
+                        alt="猫の写真"
+                        fill
+                        sizes="(max-width: 432px) calc(100vw - 32px), 400px"
+                        className={styles.img}
+                    />
+                )}
             </div>
         </div>
     );
